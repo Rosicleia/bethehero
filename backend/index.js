@@ -34,6 +34,16 @@ app.use(express.json());
     - REQUEST BODY: Corpo da requisição utilizado para criar(POST) ou alterar(PUT) recursos
 */
 
+/*     
+    Tipos de Bancos de Dados
+    - SQL: MySQL, SQLite, PostgreSQL, Oracle, Microsoft SQL Server - Utiliza a linguagem SQL para comunicação com o 
+    banco de dados (escrever, buscar dados, etc), todos esses seguem praticamente as mesmas regras, com algumas
+    diferenças de cada um. BANCO DE DADOS RELACIONAL
+    
+    - NoSQL: MongoDB, CouchDB, etc - BANCO DE DADOS NÃO RELACIONAL, não ulitiza linguagem SQL, não é estruturado,
+    cada banco tem sua linguagem
+*/
+
 //Para acessar os parâmetros dentro da rota utiliza o resquest e response
 //Request: Guarda todos os dados que vem atraves da nossa requisição (usuario) em formato JSON
 //Response: Retorna uma resposta para o usuário em formato JSON
