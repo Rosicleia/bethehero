@@ -4,6 +4,9 @@
 //Essa variavel contem todas as funcionalidades disponiveis do modulo express
 const express = require ('express');
 
+//Importar o arquivo de rotas
+const routes = require ('./routes');
+
 
 //Estou instanciando, criando minha aplicação
 //Essa aplicação que depois vai ter todas as rotas, toda a parte de funcionalidade
@@ -13,6 +16,8 @@ const app = express();
 //Tem que vim antes das rotas
 //Aqui estou falando para o express ir la no corpo da minha requisição e converter oo JSON em objeto javascript, transformar em algo entendivel pela aplicação
 app.use(express.json());
+
+app.use(routes);
 
 
 //Para criar primeira rota, quando coloca só a / é porque quero a rota raiz
@@ -44,24 +49,18 @@ app.use(express.json());
     cada banco tem sua linguagem
 */
 
-//Para acessar os parâmetros dentro da rota utiliza o resquest e response
-//Request: Guarda todos os dados que vem atraves da nossa requisição (usuario) em formato JSON
-//Response: Retorna uma resposta para o usuário em formato JSON
-//Para acessar utilizando Query:app.get('/users', (request, response) => {const params = request.query;...
-//Para acessar utilizando Route: app.get('/users/:id', (request, response) => {const params = request.params;...
-//Para acessar utilizando Request Body: app.post('/users', (request, response) => {const body = request.body;...
-app.post('/users', (request, response) => {
+/*
+    Configurando o Banco de Dados
+    Para fazer a comunicação com o BD existem três formas principais:
 
-    //Acessar parametros
-    const body = request.body;
-    console.log(body);
+    - Instalar o Driver diretamete do BD (pacote oficial do BD). 
+    EX: Selecto * from users
 
-    //Response: Retorna uma resposta para o usuário em formato JSON
-    return response.json({
-        evento: 'Semana OmniStack 11.0',
-        aluno: 'Rosicleia'
-    })
-});
+    - Utilizar a Query Builder, escredo a Query utilizando o javascript
+    Ex: table('users').select('*').where()
+    Nessa forma seria a melhor opção, pois vai estar pronto para aceitar qualquer BD SQL
+    Vamos uar o Knext.js
+*/
 
 //Vou mandar essa aplicação ouvir a porta 3333
 //Quer dizer que quando eu digitar no navegador localhost:3333, vai acessar minha aplicação
