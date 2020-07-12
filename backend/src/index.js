@@ -4,13 +4,20 @@
 //Essa variavel contem todas as funcionalidades disponiveis do modulo express
 const express = require ('express');
 
+//Módulo Cors que determina quem pode acessar nossa aplicação
+const cors = require ('cors');
+
 //Importar o arquivo de rotas
 const routes = require ('./routes');
+const { use } = require('./routes');
 
 
 //Estou instanciando, criando minha aplicação
 //Essa aplicação que depois vai ter todas as rotas, toda a parte de funcionalidade
 const app = express();
+
+//Permite que todos os nossos aplicações front-end possam acessar nossa aplicação back-end
+app.use(cors());
 
 //Informar que vai utilizar JSON no corpo de toas as requisições
 //Tem que vim antes das rotas

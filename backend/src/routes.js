@@ -1,7 +1,9 @@
 const express = require ('express');
 
-//Pacote que cria string aleatoria (estou usando no id da Ong)
-const crypto = require ('crypto');
+const OngController = require ('./controllers/OngController');
+const IncidentController = require ('./controllers/IncidentController');
+const ProfileController = require ('./controllers/ProfileController');
+const SessionController = require ('./controllers/SessionController');
 
 //Estou desaclopando o modulo de rotas do Express em uma nova variavel
 const routes = express.Router();
@@ -25,19 +27,18 @@ const routes = express.Router();
     })
 });*/
 
+//Estou criando uma sessão
+routes.post('/sessions' , SessionController.create);
 
+routes.get('/ongs', OngController.index);
+routes.post('/ongs', OngController.create);
 
-routes.post('/ongs', (request, response) => {
-    const { name, email, whatsapp, city, uf } = request.body;
+routes.get('/profile', ProfileController.index);
 
-    //Cria uma String com 4 caracteres aleatorios em hexadecimal
-    const id = crypto.randomBytes(4).toString('HEX')
+routes.get('/incidents', IncidentController.index);
+routes.post('/incidents', IncidentController.create);
+routes.delete('/incidents/:id' , IncidentController.delete);
 
-  
-    //Response: Retorna uma resposta para o usuário em formato JSON
-    return response.json({
-    })
-});
 //No Node fazemos assim para exportar uma variavel de dentro de uma arquivo
 module.exports = routes;
 
