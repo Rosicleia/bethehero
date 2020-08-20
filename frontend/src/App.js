@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+//Não vai usar mais. Não deletei o Header por causa das anotações
+//import Header from './Header';
+
+import './global.css';
+
+import Routes from './routes';
+
 
 function App() {
+  //Método useState retorna um Array com duas posições [valor, funçãoDeAtualização]
+  //counter: armazena, guarda o valor da variavel
+  //setCounter: altera o valor da varivel
+  //Toda vez que precisar mudar o valor desse contador, tenho que chamar a função setCounter
+  //const [counter, setCounter ] = useState(0);
+ //function increment() {
+    //setCounter(counter + 1);
+ //}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello OmniStack
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    //Componente
+    <Routes /> 
   );
 }
 
